@@ -1,8 +1,8 @@
 # Setup azurerm as a state backend
-terraform {
-  backend "azurerm" {
-  }
-}
+#terraform {
+#  backend "azurerm" {
+#  }
+#}
 
 # Configure the Microsoft Azure Provider
 provider "azurerm" {
@@ -76,7 +76,7 @@ resource "azurerm_kubernetes_cluster" "bdcc" {
   default_node_pool {
     name       = "default"
     node_count = 1
-    vm_size    = "Standard_D2_v2"
+    vm_size    = "standard_f16s_v2"
   }
 
   identity {

@@ -45,7 +45,7 @@ RUN wget -O $SPARK_HOME/jars/azure-keyvault-core-1.0.0.jar https://repo1.maven.o
 RUN wget -O $SPARK_HOME/jars/azure-keyvault-core-1.0.0.jar https://repo1.maven.org/maven2/ch/hsr/geohash/1.4.0/geohash-1.4.0.jar
 
 COPY ./docker/entrypoint.sh /opt/
-COPY ./dist/sparkbasics-*.egg /opt/
+#COPY ./dist/sparkbasics-*.egg /opt/
 
 RUN chmod +x /opt/*.sh
 
@@ -61,3 +61,19 @@ ENTRYPOINT [ "/opt/entrypoint.sh" ]
 # Specify the User that the actual main process will run as
 ARG spark_uid=185
 USER ${spark_uid}
+
+ARG GEOCODER_API_KEY_ARG
+
+ARG DATA_SOURCE_CLIENTID_ARG
+ARG DATA_SOURCE_SECRET_ARG
+
+ARG DATA_WAREHOUSE_ACCOUNT_NAME_ARG
+ARG DATA_WAREHOUSE_ACCOUNT_KEY_ARG
+
+ENV GEOCODER_API_KEY $GEOCODER_API_KEY_ARG
+
+ENV DATA_SOURCE_CLIENTID $DATA_SOURCE_CLIENTID_ARG
+ENV DATA_SOURCE_SECRET $DATA_SOURCE_SECRET_ARG
+
+ENV DATA_WAREHOUSE_ACCOUNT_NAME $DATA_WAREHOUSE_ACCOUNT_NAME_ARG
+ENV DATA_WAREHOUSE_ACCOUNT_KEY  $DATA_WAREHOUSE_ACCOUNT_KEY_ARG
