@@ -27,6 +27,7 @@ az storage blob upload --container-name m06sparkbasics --file Work\m06_sparkbasi
 az storage blob upload --container-name m06sparkbasics --file Work\m06_sparkbasics_python_azure\src\main\python\etl_job.py  --name etl_job.py
 ```
 Created services:
+
 ![img_1.png](screenshots/img_1.png)
 
 5. Docker image build and push to the docker hub
