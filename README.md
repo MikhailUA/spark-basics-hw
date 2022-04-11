@@ -2,7 +2,7 @@ Mykhailo Danilevskyi, Software Engineer, EPAM
 
 Data Engineering Mentoring Program [2022]
 
-Spark Basics Homework
+Spark Basics Homework (repo: https://github.com/MikhailUA/spark-basics-hw)
 
 1. Spark job for etl process is provided in src/main/python/etl_job.py
 2. Spark job tests along with the test data are provided in src/test/etl_job.py
