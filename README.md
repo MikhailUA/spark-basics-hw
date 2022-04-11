@@ -46,15 +46,16 @@ kubectl create clusterrolebinding spark-role --clusterrole=edit --serviceaccount
 
 spark-submit \
     --master k8s://http://127.0.0.1:8001 \
-    --deploy-mode cluster --name spark-basics \
+    --deploy-mode cluster \
+    --name spark-basics \
+    --conf spark.executor.memory=2G \
+    --conf spark.driver.memory=500M \
+    --conf spark.driver.cores=1 \
+    --conf spark.executor.cores=2 \
+    --conf spark.executor.instances=1 \
     --conf spark.kubernetes.authenticate.driver.serviceAccountName=spark \
     --conf spark.kubernetes.container.image=mykhailoua/spark-basics-aks:v3 \
-    --conf spark.kubernetes.executor.secretKeyRef.ENV_NAME=GEOCODER_API_KEY:5e5a289d19a54125906c378841edb0b5
-    --conf spark.kubernetes.executor.secretKeyRef.ENV_NAME=DATA_SOURCE_CLIENTID:f3905ff9-16d4-43ac-9011-842b661d556d
-    --conf spark.kubernetes.executor.secretKeyRef.ENV_NAME=DATA_SOURCE_SECRET:mAwIU~M4~xMYHi4YX_uT8qQ.ta2.LTYZxT
-    --conf spark.kubernetes.executor.secretKeyRef.ENV_NAME=DATA_WAREHOUSE_ACCOUNT_NAME:sparkbasicsstorage1
-    --conf spark.kubernetes.executor.secretKeyRef.ENV_NAME=DATA_WAREHOUSE_ACCOUNT_KEY:vf9FqUrmybJhZzwEkaavs4FePE/fJ5y9QH0CxOqpGtu2ACgj54or5ddHH/9h/nvxURiSyu8cX2oUVnXE+I6aZQ==
-    --py-files https://sparkbasicsstorage1.blob.core.windows.net/m06sparkbasics/dependencies.zip \ 
+    --py-files https://sparkbasicsstorage1.blob.core.windows.net/m06sparkbasics/dependencies.zip \
     https://sparkbasicsstorage1.blob.core.windows.net/m06sparkbasics/etl_job.py
 ```
 
